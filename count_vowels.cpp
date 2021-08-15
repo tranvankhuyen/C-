@@ -9,7 +9,7 @@ bool check(char element)
 	{
 		if(element == a[i])
 			return true;
-			
+				
 	}
 	return false;
 }
