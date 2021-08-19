@@ -82,7 +82,7 @@ string result(string &a)
 	}
 	int MAX = Max(b, len); // find max i Array b
 	string str;
-	if(MAX == 1)
+	if(MAX == 0)
 	{
 		str = "-1";
 	}
