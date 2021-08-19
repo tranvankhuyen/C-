@@ -7,22 +7,21 @@ using std::string;
 void Count_the_same_element(string &a, int b[], int &x)
 {
 	int len = a.length();
-	for(int i = 0 ; i < len; i++)
-		b[i] = 1;
-	for(int i = 0; i < len; i++)
-	{
-		if(a[i] == a[i+1])
+		for(int i = 0 ; i < len; i++)
+			b[i] = 1;
+		for(int i = 0; i < len; i++)
 		{
-			while(a[i] == a[i+1])
+			if(a[i] == a[i+1])
 			{
-				i++;
-				b[x]++;
-				
+				while(a[i] == a[i+1])
+				{
+					i++;
+					b[x]++;
+					
+				}
+				x++;
 			}
-			x++;
 		}
-		// x++;
-	}
 }
 // check  function
 bool check(int b[], int x)
@@ -50,6 +49,10 @@ int main(){
 	}
 	else
 		std::cout<<"NO"<<std::endl;
+	for(int i = 0; i < x; i++)
+	{
+		std::cout<<b[i]<<" ";
+	}
 	return 0;
 
 }

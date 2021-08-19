@@ -1,9 +1,21 @@
 #include <iostream>
 
-int main(){
-	for(int i = 1; i <= 20; i++)
+bool check(int a)
+{
+	for(int i = 2; i < a; i++)
 	{
-		std::cout<<i*i*i<<" ";	
+		if(a % i == 0)
+			return true;
+	}
+	return false;
+}
+int main(){
+	for(int i = 2; i <= 100; i++)
+	{
+		if(check(i) == false)
+		{
+			std::cout<<i<<" ";
+		}
 	}
 	return 0;
 }
