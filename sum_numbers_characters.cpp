@@ -2,64 +2,55 @@
 #include <sstream>
 using std::string;
 
-
-// split function
-string split_words(string &a, int &i)
+// check number function
+bool check(char &a)
 {
-	// Initialize an empty c string..
-	string c;
-	// A loop runs until end of a word..
-	while (a[i] != ' ')
-	{
-		// if not end, add a[i] into c string..
-		if (a[i] != '\0')
-		{
-			c += a[i];
-			i++;
-		}
-		if (a[i] == '\0')
-			break;
-	}
-	// Add a value to ignore spaces..
-	if (a[i] == ' ')
-		i++;
-	return c;
+	if(a >= 48 && a <= 57)
+		return true;
+	return false;
 }
-int split_numbers(string &a)
+int split_numbers(string &a, int &i)
 {
+
+	string c;
 	int len = a.length();
-	string c;
-	for(int i = 0; i < len; i++)
+	for(; i < len; i++)
 	{
-		if(a[i] >= 48 && a[i] <= 57)
-			c += a[i];
-	}
-	int len_c = c.length();
+		if(check(a[i]) == true)
+		{
+			while(check(a[i]) == true)
+			{
+				c += a[i];
+				i++;
+			}
+			break;
+		}
+	}	
+	if(a[i] != '\0' && check(a[i]) == false)
+		i++;
 
-	int x;
-	if(len_c == 0)
-		x = 0;
-	else
-	{
+	int result;
+	if(c == "")
+		result = 0;
+
 	std::stringstream geek(c);
-	geek >> x;
-	}
-	return x;
+	geek >> result;
+	return result;
 }
 
-int main(){
-	string a = "C++ Versiuon 14aa11bb23";
-	// std::cout<<split_numbers(a);
+int Sum(string &a)
+{
 	int i = 0;
 	int sum = 0;
 	while(a[i] != '\0')
-	{
-		string c = split_words(a,i);
-		sum += split_numbers(c);
-
-
-
+	{			
+		sum += split_numbers(a, i);
 	}
-	std::cout<<sum;
+	return sum;
+}
+int main() {
+
+	string a = "C++ Versiuon 14aa11bb23";
+	std::cout<<Sum(a)<<std::endl;
 	return 0;
 }
